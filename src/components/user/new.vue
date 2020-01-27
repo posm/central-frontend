@@ -26,6 +26,11 @@ except according to the terms contained in the LICENSE file.
           <span class="form-label">Email address *</span>
         </label>
         <label class="form-group">
+          <input ref="password" v-model.trim="password" type="password" class="form-control" placeholder="Initial Password *" required
+            autocomplete="off">
+          <span class="form-label">Password *</span>
+        </label>
+        <label class="form-group">
           <input v-model.trim="displayName" type="text" class="form-control"
             placeholder="Display name">
           <span class="form-label">Display name</span>
@@ -62,6 +67,7 @@ export default {
     return {
       awaitingResponse: false,
       email: '',
+      password: '',
       displayName: ''
     };
   },
@@ -69,6 +75,7 @@ export default {
     state(state) {
       if (state) return;
       this.email = '';
+      this.password = '';
       this.displayName = '';
     }
   },
@@ -77,7 +84,10 @@ export default {
       this.$refs.email.focus();
     },
     submit() {
-      const postData = { email: this.email };
+      const postData = {
+          email: this.email,
+          password: this.password,
+      };
       if (this.displayName !== '') postData.displayName = this.displayName;
       this.post('/users', postData)
         .then(response => {
