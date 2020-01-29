@@ -17,8 +17,7 @@ except according to the terms contained in the LICENSE file.
       <p v-if="user != null" class="modal-introduction">
         Once you click <strong>Reset Password</strong> below, the password for
         the user “{{ user.displayName }}” &lt;{{ user.email }}&gt; will be
-        immediately invalidated. An email will be sent to {{ user.email }} with
-        instructions on how to proceed.
+        immediately invalidated. An url will be provided here to reset the password.
       </p>
       <div class="modal-actions">
         <button id="user-reset-password-button" :disabled="awaitingResponse"
@@ -57,8 +56,8 @@ export default {
     resetPassword() {
       const data = { email: this.user.email };
       this.post('/users/reset/initiate?invalidate=true', data)
-        .then(() => {
-          this.$emit('success', this.user);
+        .then(({ data: { resetUrl } }) => {
+          this.$emit('success', { user: this.user, resetUrl });
         })
         .catch(noop);
     }

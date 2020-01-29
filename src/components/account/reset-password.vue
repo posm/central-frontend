@@ -15,7 +15,7 @@ except according to the terms contained in the LICENSE file.
       <div class="panel panel-default panel-main">
         <div class="panel-heading">
           <h1 class="panel-title">
-            Reset Password
+            Reset Password (Please contact your ODK Central Administrator)
           </h1>
         </div>
         <div class="panel-body">
@@ -27,7 +27,7 @@ except according to the terms contained in the LICENSE file.
             </label>
             <div class="panel-footer">
               <button :disabled="awaitingResponse" type="submit"
-                class="btn btn-primary">
+                class="btn btn-primary" disabled="disabled">
                 Reset password <spinner :state="awaitingResponse"/>
               </button>
               <router-link :to="loginLocation" tag="button" type="button"

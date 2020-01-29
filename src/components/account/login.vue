@@ -32,9 +32,9 @@ except according to the terms contained in the LICENSE file.
                 class="btn btn-primary">
                 Log in <spinner :state="disabled"/>
               </button>
-              <router-link :to="resetPasswordLocation" :disabled="disabled"
+              <router-link :to="resetPasswordLocation" :disabled="true"
                 tag="button" type="button" class="btn btn-link">
-                Reset password
+                Contact you ODK central administrator for password reset.
               </router-link>
             </div>
           </app-form>

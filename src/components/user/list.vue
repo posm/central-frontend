@@ -169,9 +169,10 @@ export default {
       this.resetPassword.user = user;
       this.resetPassword.state = true;
     },
-    afterResetPassword(user) {
+    afterResetPassword({ user, resetUrl }) {
       this.resetPassword.state = false;
-      this.$alert().success(`The password for “${user.displayName}” has been invalidated. An email has been sent to ${user.email} with instructions on how to proceed.`);
+      const fullResetUrl = window.location.origin + resetUrl;
+      this.$alert().success(`The password for “${user.displayName}” has been invalidated. Use this url below to reset the password. \n\n${fullResetUrl}`);
     },
     showRetire(user) {
       this.retire.user = user;
