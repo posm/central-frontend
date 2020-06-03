@@ -34,7 +34,7 @@ except according to the terms contained in the LICENSE file.
               </button>
               <router-link :to="resetPasswordLocation" :disabled="true"
                 tag="button" type="button" class="btn btn-link">
-                Contact you ODK central administrator for password reset.
+                Contact your POSM administrator for password reset.
               </router-link>
             </div>
           </app-form>
